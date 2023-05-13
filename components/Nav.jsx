@@ -12,15 +12,11 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() => {
-    const setUpProviders = async () => {
-      const response = await getProviders();
-
-      setProviders(response);
-    }
-
-    setUpProviders();
-  }, [])
-  
+    (async () => {
+      const res = await getProviders();
+      setProviders(res);
+    })();
+  }, []);
 
   return (
     <nav className='flex-between w-full mb-16 pt-3'>
@@ -81,7 +77,7 @@ const Nav = () => {
         {session?.user ? (
           <div className='flex'>
             <Image
-              src="assets/images/logo.svg"
+              src={session?.user.image}
               width={37}
               height={37}
               className='rounded-full'
