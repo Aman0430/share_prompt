@@ -43,7 +43,8 @@ const Feed = () => {
       (item) => 
         regex.test(item.creator.username) ||
         regex.test(item.tag) ||
-        regex.test(item.prompt)
+        regex.test(item.prompt) || 
+        regex.test(item.creator.email)
     );
   };
 
@@ -69,7 +70,7 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form className="relatuve w-full flex-center">
+      <form className="relative w-full flex-center">
         <input 
           type="text"
           placeholder="Search for tag or a username"
